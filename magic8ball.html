@@ -1,0 +1,72 @@
+<html>
+    
+<head>
+    
+<script languague = "JavaScript">
+    
+var answers = ["Yes", "No", "Maybe", "Definitely", "Absolutly", "Absolutly Not", "Possibly", "It Is Decidedly So", "Why do you think that would happen?", "Sure I Guess"]
+
+function random()
+{
+    var rand = -1;
+    var userQ=document.getElementById("question");
+    var result=document.getElementById("myanswer");
+    var clip=document.getElementById("player");
+    
+    rand = Math.random()*10; //Math.ramdom returns a random decimal between 0 (inclusive) and 1 (exclusive) 
+    
+    rand = Math.floor(rand); //returns the nearest integer that is LESS than the parameter
+    
+    //rand contains a value between 0-9 (inclusive)
+    
+    //rand = rand + 1; // 1-10 -- adjusting the range to the start and end point
+    
+    if(userQ.value.length==0)
+    {
+        result.value="You forgot to put a question";
+    }
+    else
+    {
+        result.value=answers[rand];
+        if(rand == 4)
+        {
+            clip.play();
+        }
+    }
+    
+    
+}
+
+</script>
+    
+</head>
+<body background=images/magic8ballbkng.gif>
+<font color="#b19cd9" size="4">
+<center>
+    
+<h1>Random Number Generator</h1>
+    
+<br/><br/>
+    
+Welcome to the Magic 8 Ball. Write out your question in the top text box.
+<br/><br/>
+After the text is written, press the button to recive an answer. Make sure to use a question mark or the question is invalid.
+<br/><br/>
+<img src="images/magic8ball.png" width=200>
+    
+<br/><br/>
+    
+Click here to <a href="index.html"> return to my home page. </a href>
+    
+<br/><br/>
+<input id="question" type = "text" size="80" onfocusin="reset()"/>
+<br/><br/>    
+<input type="button" value="Click here" onClick="random()"/>
+<br/><br/>
+<input id="myanswer" type = "text" readonly=true size="80"/>
+<audio id="player" src="sounds/magic8ball.mp3"> </audio>
+    
+</center>
+</font>
+</body>
+</html>
