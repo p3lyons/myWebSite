@@ -1,0 +1,93 @@
+<html> 
+<head> 
+<script language="JavaScript">
+
+/*************** Algorithm ******************
+1.Get Starter Code
+2.Format page
+3.Create groups of cats and facts
+4.Create getIndex
+5.Create the start function
+6.Link the lists with the functions
+7.Use the page
+8 Profit
+
+*/
+   
+var group = ["-- Choose a Cat --", "House Cat", "Lion", "Tiger", "Cheetah", "Panther", "Leopard", "Cougar", "Ocelot"];
+// add a minimum of eight cats and facts.
+var facts = ["-- No Cat selected --", "The cat was worshipped by the Egyptians.", "Lions are the only cat to live in groups.", "Tigers are the largest cat in the world.", "Cheetahs don't roar. They meow.", "Panthers are not pink.", "Leopards are actually nocternal!", "Cougars are born with their eyes closed like a house cat.", "Ocelots are featured in the popular game Minecraft."];
+
+function loadData()
+{
+	var sum = 0;
+	for(var i = 0; i<group.length; i++)
+    {
+        var daList = document.getElementById("cat");
+  		var option = document.createElement("option");
+  		option.text = group[i];
+  		daList.add(option);
+    }
+}
+
+// This function identifies which element from the drop down has been selected. It calls the 
+// getIndex function to acquire what the index of the selected item. Then it displays the 
+// corresponding element in the facts list. (This is diplayed in the textbox on the web page.)
+function start()
+{
+   var names = document.getElementById("cat");
+   var index = getIndex(names.value);
+   if(index < 0)
+   {
+      alert("How did you get here?");
+   }
+   else
+   {
+      document.getElementById("funFact").value = facts[index];
+   }
+}
+
+// This function searches the group array for the element passed as a parameter
+// and returns the index number for that element in the array.
+function getIndex(d) //var d = hello
+{
+   var answer = -1; // -1 is an illegal value for an array index.
+                  // return -1 if d is NOT found in the group array.
+   // linear search
+   for(var i=0; i < group.length; i++)
+   {
+      // test if the next element in the group array is the same as the parameter (d)
+      if( group[i] == d) // d is found at index i
+       {
+           answer = i;
+       }
+
+   }
+      
+   return answer;
+}
+
+
+
+</script>
+</head>
+<body onload="loadData()" background=images/herobkng.gif> 
+<font color="white" size="4">
+<center>
+<h1>Fun Facts About Cats</h1>
+Click here to <a href="index.html">return to my home page. </a href>
+
+<br/><br/>
+<table border = 3>
+	<tr>
+		<td>  	<select name="p1" id="cat"></select>	</td>
+		<td>	<input id="funFact" type="text" size="40"/> </td>
+	</tr>
+</table>
+<br/><br/>
+<input type="button" value="Give Me the Fact" onclick="start()"/>
+</center>
+
+
+</body>
+</html>
